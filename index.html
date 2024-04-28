@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Text to Base64 Converter</title>
+    <title>Base64 Converter</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,14 +11,14 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
+            background-color: #333;
+            color: #fff;
         }
         #converter {
             text-align: center;
-            background-color: #fff;
+            background-color: #444;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             width: 60%;
             max-width: 600px;
             margin: auto;
@@ -30,8 +30,8 @@
             border-radius: 4px;
             border: 1px solid #ddd;
             min-height: 100px;
-            max-height: 200px;
-            overflow: auto;
+            background-color: #fff;
+            color: #000;
         }
         button {
             padding: 10px 20px;
@@ -42,27 +42,41 @@
             cursor: pointer;
             margin: 5px;
         }
+        select {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div id="converter">
-        <h1>Text to Base64 Converter</h1>
+        <h1>Base64 Converter</h1>
+        <select id="conversionType">
+            <option value="textToBase64">Text to Base64</option>
+            <option value="base64ToText">Base64 to Text</option>
+        </select>
         <textarea id="input" placeholder="Enter your text here"></textarea><br>
-        <button onclick="copyToClipboard()">Copy</button>
+        <button onclick="convert()">Convert</button>
         <button onclick="deleteAll()">Delete All</button><br>
-        <textarea id="output" placeholder="Your Base64 output will appear here"></textarea><br>
-        <button onclick="convertToBase64()">Convert</button>
+        <textarea id="output" placeholder="Your output will appear here"></textarea><br>
+        <button onclick="copyToClipboard()">Copy</button>
     </div>
 
     <script>
-        function convertToBase64() {
+        function convert() {
             var inputText = document.getElementById('input').value;
-            var outputText = btoa(inputText);
+            var conversionType = document.getElementById('conversionType').value;
+            var outputText;
+            if (conversionType === 'textToBase64') {
+                outputText = btoa(inputText);
+            } else if (conversionType === 'base64ToText') {
+                outputText = atob(inputText);
+            }
             document.getElementById('output').value = outputText;
         }
 
         function deleteAll() {
             document.getElementById('input').value = '';
+            document.getElementById('output').value = '';
         }
 
         function copyToClipboard() {
