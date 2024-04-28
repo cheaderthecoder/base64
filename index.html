@@ -46,10 +46,10 @@
     <div id="converter">
         <h1>Text to Base64 Converter</h1>
         <textarea id="input" placeholder="Enter your text here"></textarea><br>
-        <button onclick="convertToBase64()">Convert</button>
+        <button onclick="copyToClipboard()">Copy</button>
         <button onclick="deleteAll()">Delete All</button><br>
         <textarea id="output" placeholder="Your Base64 output will appear here"></textarea><br>
-        <button onclick="copyAll()">Copy All</button>
+        <button onclick="convertToBase64()">Convert</button>
     </div>
 
     <script>
@@ -63,7 +63,7 @@
             document.getElementById('input').value = '';
         }
 
-        function copyAll() {
+        function copyToClipboard() {
             var outputText = document.getElementById('output');
             outputText.select();
             document.execCommand('copy');
