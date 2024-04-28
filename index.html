@@ -34,6 +34,7 @@
             background-color: #007BFF;
             color: #fff;
             cursor: pointer;
+            margin: 5px;
         }
     </style>
 </head>
@@ -41,8 +42,10 @@
     <div id="converter">
         <h1>Text to Base64 Converter</h1>
         <textarea id="input" placeholder="Enter your text here"></textarea><br>
-        <button onclick="convertToBase64()">Convert</button><br>
-        <textarea id="output" placeholder="Your Base64 output will appear here"></textarea>
+        <button onclick="convertToBase64()">Convert</button>
+        <button onclick="deleteAll()">Delete All</button><br>
+        <textarea id="output" placeholder="Your Base64 output will appear here"></textarea><br>
+        <button onclick="copyAll()">Copy All</button>
     </div>
 
     <script>
@@ -50,6 +53,16 @@
             var inputText = document.getElementById('input').value;
             var outputText = btoa(inputText);
             document.getElementById('output').value = outputText;
+        }
+
+        function deleteAll() {
+            document.getElementById('input').value = '';
+        }
+
+        function copyAll() {
+            var outputText = document.getElementById('output');
+            outputText.select();
+            document.execCommand('copy');
         }
     </script>
 </body>
