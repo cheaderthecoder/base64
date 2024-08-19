@@ -43,3 +43,11 @@
         select {
             margin-bottom: 20px;
         }
+        #conversionType
+        {
+        color: white;
+        background-color: #007bff;
+        border-radius: 4px;
+        border: none;
+        padding: 8px;
+        }
