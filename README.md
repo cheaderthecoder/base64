@@ -7,4 +7,6 @@ A simple web application that allows users to easily convert Base64-encoded stri
 Input Text: `Hello, World!`
 Encoded Base64: `SGVsbG8sIFdvcmxkIQ==`
 
-
+### Base64 to Text Example:
+Input Base64: `SGVsbG8sIFdvcmxkIQ==`
+Decoded Text: `Hello, World!`
